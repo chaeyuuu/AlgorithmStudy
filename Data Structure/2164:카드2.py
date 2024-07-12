@@ -12,37 +12,39 @@
 # 4. 예를 들어 n=4 -> 위에서부터 1234 -> 1버림 -> 234 -> 그다음 위에 있는 애가 2니까 342 -> 그다음에 버림 -> 42 -> 그다음 4를 밑으로 보내면 24 -> 2버림 -> 한장 남은거 출력
 
 # --- 시간 초과--- 
-# numList=[]
+import time
 
-# N=int(input())
-# sstart = time.time()
-# for i in range(N,0,-1):
-#     numList.append(i)
+numList=[]
+
+N=int(input())
+sstart = time.time()
+for i in range(N,0,-1):
+    numList.append(i)
   
 
-# while len(numList) != 1:  
-#     numList.pop()
-#     next=numList.pop()
-#     numList.insert(0,next)
+while len(numList) != 1:  
+    numList.pop()
+    next=numList.pop()
+    numList.insert(0,next)
 
-# print(f'{numList}, 삽입 수행 시간, {time.time() - sstart} 초')
+print(f'{numList}, 삽입 수행 시간, {time.time() - sstart} 초')
 # print(numList)
 
 # --- deque 사용 ----
-import time
-from collections import deque
+# import time
+# from collections import deque
 
-N=int(input())
-myqueue = deque()
+# N=int(input())
+# myqueue = deque()
 
-for i in range(N,0,-1):
-    myqueue.append(i)
+# for i in range(N,0,-1):
+#     myqueue.append(i)
 
-while len(myqueue) != 1:
-    myqueue.pop()
-    next = myqueue.pop()
-    myqueue.appendleft(next)
-print(myqueue[0])
+# while len(myqueue) != 1:
+#     myqueue.pop()
+#     next = myqueue.pop()
+#     myqueue.appendleft(next)
+# print(myqueue[0])
 
 
 
