@@ -6,20 +6,39 @@
 # nums에 들어있는 숫자의 개수는 3개 이상 50개 이하입니다.
 # nums의 각 원소는 1 이상 1,000 이하의 자연수이며, 중복된 숫자가 들어있지 않습니다.
 
-def isPrime(sum):
-    for i in range(2,sum):
-        if sum % i == 0:
+# --- 개선 전 코드 ---
+# def isPrime(sum):
+#     for i in range(2,sum):
+#         if sum % i == 0:
+#             return False
+#     return True 
+
+# def solution(nums):
+#     answer,sum = 0,0
+
+#     for i in range(0,len(nums)-2):
+#         for k in range (i+1, len(nums)-1):
+#             for j in range (k+1, len(nums)):
+#                 sum = nums[i]+nums[k]+nums[j]
+#                 if isPrime(sum) : answer+=1
+
+#     return answer
+
+# --- 개선 후 코드 ---
+
+from itertools import combinations
+
+def isPrime(result):
+    for i in range(2,(result//2)+1):
+        if result % i == 0:
             return False
     return True 
-    
+
 def solution(nums):
-    answer,sum = 0,0
+    answer=0
 
-    for i in range(0,len(nums)-2):
-        for k in range (i+1, len(nums)-1):
-            for j in range (k+1, len(nums)):
-                sum = nums[i]+nums[k]+nums[j]
-                if isPrime(sum) : answer+=1
-
+    comb = list(combinations(nums,3))
+    for i in comb:
+        if isPrime(sum(i)) : answer+=1
     return answer
     
