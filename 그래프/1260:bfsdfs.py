@@ -10,12 +10,16 @@ import sys
 from collections import deque
 
 def bfs(V):
+    # 시작점을 큐에 넣고 방문했다고 표시
     queue = deque([V])
     visited_bfs[V] = 1
+    # 큐가 빌때까지 반복
     while queue:
+        # 큐에서 하나씩 빼서 출력
         v=queue.popleft()
         print(v, end=' ')
         for i in range(1, N+1):
+            # 방문하지 않았고, 연결되어있는 노드를 큐에 넣고 방문했다고 표시
             if visited_bfs[i] == 0 and graph[v][i] == 1:
                 queue.append(i)
                 visited_bfs[i] = 1
@@ -28,13 +32,19 @@ def dfs(V):
             dfs(i)
 
 N,M,V = map(int, sys.stdin.readline().split())
+# 이차원 배열 형성
 graph = [[0]*(N+1) for _ in range(N+1)]
 
+# 간선의 개수만큼 입력
 for _ in range(M):
     x,y = map(int, sys.stdin.readline().split())
-    graph[x][y] = 1
+    # 연결되어있는걸 나타냄 (양방향)
+    graph[x][y] = 1 
     graph[y][x] = 1
+    
+print("graph:", graph)
 
+# 방문한 노드를 체크하기 위한 배열
 visited_dfs = [0] * (N+1)
 visited_bfs = [0] * (N+1)
 
