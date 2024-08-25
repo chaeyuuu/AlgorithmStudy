@@ -42,8 +42,6 @@ for _ in range(M):
     graph[x][y] = 1 
     graph[y][x] = 1
     
-print("graph:", graph)
-
 # 방문한 노드를 체크하기 위한 배열
 visited_dfs = [0] * (N+1)
 visited_bfs = [0] * (N+1)
